@@ -4,41 +4,73 @@
 методов чтения с клавиатуры?*/
 import java.util.Scanner;
 public class Lesson_10_1 {
+     public static final String RECTANGLE_LENGTH_REQUIRE_MESSAGE = "Enter rectangle's length: ";
+    public static final String RECTANGLE_WIDTH_REQUIRE_MESSAGE = "Enter rectangle's width: ";
+
+    //    Увеличиваем количество угловый пробелов, поскольку вертикальная граница теперь занимает 2 символа
+    public static final String RECTANGLE_EMPTY_ELEMENT = "  ";
+    public static final String RECTANGLE_HORIZONTAL_ELEMENT = "==";
+    public static final String RECTANGLE_VERTICAL_ELEMENT = "||";
+    public static final String EMPTY_STRING = "";
+    public static final char NEW_LINE_SYMBOL = '\n';
+
+    public static final Scanner SCANNER = new Scanner(System.in);
+
+
     public static void main(String[] args) {
+        int length = requireInt(RECTANGLE_LENGTH_REQUIRE_MESSAGE);
+        int width = requireInt(RECTANGLE_WIDTH_REQUIRE_MESSAGE);
+        SCANNER.close();
 
-        Scanner scanner = new Scanner(System.in);
+        String horizontalLine = createHorizontalLine(length);
+        String verticalLines = createVerticalLines(length, width);
 
-        final string SCANNER = 'scanner';
-        System.out.print("Введите длину прямоугольника: ");
-        int dl = scanner.nextInt();
-        System.out.print("Введите ширину прямоугольника: ");
-        int sh = scanner.nextInt();
-        System.out.print("Размер прямоугольника: " + dl + "х" + sh + "  начнём рисовать!\n");
-        scanner.close();
-
-        method1(sh);
-
-        System.out.println("");
-        final char LITERAL = '|';
-        final char LITERAL1 = '_';
-
-        for (int j = 1; j <= dl; j++) {
-            System.out.print("||");
-
-            for (int k = 1; k <= dl; k++) {
-                System.out.print(" ");
-            }
-            for (int m = 1; m == 1; m++) {
-                System.out.print("||");
-            }
-            System.out.println("");
-        }
-
-        method1(sh);
+        printRectangle(horizontalLine, verticalLines);
     }
-    static void method1 (int sh){
-        for (int i = 1; i <= sh; i++) {
-            System.out.print("==");
+
+    static int requireInt(String requiringMessage) {
+        System.out.print(requiringMessage);
+
+        return SCANNER.nextInt();
+    }
+
+    static void printRectangle(String horizontalLine, String verticalLines) {
+        System.out.print(horizontalLine + verticalLines + horizontalLine);
+    }
+
+    static String createHorizontalLine(int length) {
+        String horizontalLine = RECTANGLE_EMPTY_ELEMENT;
+
+        for (int i = 0; i < length; i++) {
+            horizontalLine += RECTANGLE_HORIZONTAL_ELEMENT;
         }
+
+        horizontalLine += RECTANGLE_EMPTY_ELEMENT + NEW_LINE_SYMBOL;
+
+        return horizontalLine;
+    }
+
+    static String createVerticalLines(int length, int width) {
+        String verticalLinesUnit = getVerticalLinesUnit(length);
+
+        String verticalLines = EMPTY_STRING;
+
+        for (int i = 0; i < width; i++) {
+            verticalLines += verticalLinesUnit;
+        }
+
+        return verticalLines;
+    }
+
+    static String getVerticalLinesUnit(int length) {
+        String verticalLinesUnit = RECTANGLE_VERTICAL_ELEMENT;
+
+        for (int i = 0; i < length; i++) {
+            verticalLinesUnit += RECTANGLE_EMPTY_ELEMENT;
+        }
+
+        verticalLinesUnit += RECTANGLE_VERTICAL_ELEMENT + NEW_LINE_SYMBOL;
+
+        return verticalLinesUnit;
     }
 }
