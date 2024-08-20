@@ -1,0 +1,44 @@
+/*Используя кодовую базу из задачи вынести строковые и символьные литералы в константы. Попробуйте
+нарисовать прямоугольник, используя == для каждой единицы длины и || – для каждой единицы ширины.
+Также попробуйте записать в константу переменную scanner. Упростится ли использование сканера внутри
+методов чтения с клавиатуры?*/
+import java.util.Scanner;
+public class Lesson_10_1 {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        final string SCANNER = 'scanner';
+        System.out.print("Введите длину прямоугольника: ");
+        int dl = scanner.nextInt();
+        System.out.print("Введите ширину прямоугольника: ");
+        int sh = scanner.nextInt();
+        System.out.print("Размер прямоугольника: " + dl + "х" + sh + "  начнём рисовать!\n");
+        scanner.close();
+
+        method1(sh);
+
+        System.out.println("");
+        final char LITERAL = '|';
+        final char LITERAL1 = '_';
+
+        for (int j = 1; j <= dl; j++) {
+            System.out.print("||");
+
+            for (int k = 1; k <= dl; k++) {
+                System.out.print(" ");
+            }
+            for (int m = 1; m == 1; m++) {
+                System.out.print("||");
+            }
+            System.out.println("");
+        }
+
+        method1(sh);
+    }
+    static void method1 (int sh){
+        for (int i = 1; i <= sh; i++) {
+            System.out.print("==");
+        }
+    }
+}
